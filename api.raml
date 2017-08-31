@@ -1,0 +1,120 @@
+#%RAML 1.0
+title: NikoResto API documentation
+baseUri: /{version}
+version: v1
+protocols:
+    - HTTP
+    - HTTPS
+
+uses:
+    TypeFriend: types/friend/friend.raml
+    TypeRestaurant: types/restaurant/restaurant.raml
+    TypeRestaurantParticipant: types/restaurant_participant/restaurant_participant.raml
+    TypeRestaurantProposition: types/restaurant_proposition/restaurant_proposition.raml
+
+/friends:
+    get:
+        description: Searches within my friends
+        queryString:
+            type: TypeFriend.SearchFriend
+            example: !include examples/friend/search_friend.json
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: TypeFriend.FriendList
+                        example: !include examples/friend/friend_list.json
+    post:
+        description: Adds a friend
+        body:
+            application/json:
+                type: TypeFriend.PostFriend
+                example: !include examples/friend/post_friend.json
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: TypeFriend.Friend
+                        example: !include examples/friend/friend.json
+    /{friend_id}:
+        delete:
+            queryParameters:
+                friend_id:
+                    type: integer
+                    required: true
+                    example: 1
+            responses:
+                204:
+
+/restaurants:
+    get:
+        description: Search within existing restaurants
+        queryString:
+            type: TypeRestaurant.SearchRestaurant
+            example: !include examples/restaurant/search_restaurant.json
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: TypeRestaurant.RestaurantList
+                        example: !include examples/restaurant/restaurant_list.json
+
+/restaurant-propositions:
+    get:
+        description: Searches within restaurant propositions
+        queryString:
+            type: TypeRestaurantProposition.SearchRestaurantProposition
+            example: !include examples/restaurant_proposition/search_restaurant_proposition.json
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: TypeRestaurantProposition.RestaurantPropositionList
+                        example: !include examples/restaurant_proposition/restaurant_proposition_list.json
+    post:
+        description: Adds a new restaurant proposition
+        body:
+            application/json:
+                type: TypeRestaurantProposition.PostRestaurantProposition
+                examples:
+                    with_restaurant_id: !include examples/restaurant_proposition/post_restaurant_proposition_with_id.json
+                    without_restaurant_id: !include examples/restaurant_proposition/post_restaurant_proposition_without_id.json
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: TypeRestaurantProposition.RestaurantProposition
+                        example: !include examples/restaurant_proposition/restaurant_proposition.json
+    /{restaurant_proposition_id}:
+        /restaurant-participants:
+            post:
+                queryParameters:
+                    restaurant_proposition_id:
+                        type: integer
+                        required: true
+                        example: 1
+                description: Adds currently logged user to the restaurant proposition
+                body:
+                    application/json:
+                        type: TypeRestaurantParticipant.PostRestaurantParticipant
+                        example: !include examples/restaurant_participant/post_restaurant_participant.json
+                responses:
+                    201:
+                        body:
+                            application/json:
+                                type: TypeRestaurantParticipant.RestaurantParticipant
+                                example: !include examples/restaurant_participant/restaurant_participant.json
+            /{restaurant_participant_id}:
+                delete:
+                    queryParameters:
+                        restaurant_proposition_id:
+                            type: integer
+                            required: true
+                            example: 1
+                        restaurant_participant_id:
+                            type: integer
+                            required: true
+                            example: 1
+                    description: Removes the currently logged user to specified restaurant proposition
+                    responses:
+                        204:

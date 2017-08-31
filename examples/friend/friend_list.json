@@ -1,0 +1,45 @@
+{
+    "friend_list": [{
+        "id": 1,
+        "user": {
+            "id": 1,
+            "first_name": "Bronislav",
+            "last_name": "Ostrowski"
+        }
+    }, {
+        "id": 2,
+        "user": {
+            "id": 2,
+            "first_name": "Turid",
+            "last_name": "Van Houten"
+        }
+    }, {
+        "id": 1,
+        "user": {
+            "id": 3,
+            "first_name": "Tiburtius",
+            "last_name": "Gupta"
+        }
+    }, {
+        "id": 1,
+        "user": {
+            "id": 4,
+            "first_name": "Sekhar",
+            "last_name": "Tamboli"
+        }
+    }, {
+        "id": 1,
+        "user": {
+            "id": 5,
+            "first_name": "Ibro",
+            "last_name": "Zanetti"
+        }
+    }, {
+        "id": 1,
+        "user": {
+            "id": 6,
+            "first_name": "Lyle",
+            "last_name": "Suárez"
+        }
+    }]
+}

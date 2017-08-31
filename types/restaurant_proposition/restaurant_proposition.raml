@@ -1,0 +1,85 @@
+#%RAML 1.0 Library
+
+types:
+    RestaurantParticipant:
+        type: object
+        properties:
+            id:
+                type: integer
+                required: true
+            user:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer
+                        required: true
+                    first_name:
+                        type: string
+                        required: true
+                    last_name:
+                        type: string
+                        required: true
+
+    PostRestaurantProposition:
+        type: object
+        properties:
+            restaurant:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer | nil
+                        required: true
+                    name:
+                        type: string
+                        required: true
+            date:
+                type: date-only
+                required: true
+
+    RestaurantProposition:
+        type: object
+        properties:
+            id:
+                type: integer
+                required: true
+            date:
+                type: date-only
+                required: true
+            restaurant:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer
+                        required: true
+                    name:
+                        type: string
+                        required: true
+            restaurant_participant_list:
+                type: RestaurantParticipant[]
+                required: true
+
+    RestaurantPropositionList:
+        type: object
+        properties:
+            restaurant_proposition_list:
+                type: RestaurantProposition[]
+                required: true
+
+    SearchRestaurantProposition:
+        type: object
+        properties:
+            date:
+                type: date-only
+                required: false
+            offset:
+                type: integer
+                required: false
+            limit:
+                type: integer
+                required: false
+            sort:
+                type: string
+                required: false
