@@ -1,0 +1,27 @@
+#%RAML 1.0 Library
+
+types:
+    PostRestaurantParticipant:
+        type: object
+        properties:
+
+    RestaurantParticipant:
+        type: object
+        properties:
+            id:
+                type: integer
+                required: true
+            user:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer
+                        required: true
+            restaurant_proposition:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer
+                        required: true
