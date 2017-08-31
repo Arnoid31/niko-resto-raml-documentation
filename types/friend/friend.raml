@@ -1,0 +1,53 @@
+#%RAML 1.0 Library
+
+types:
+    PostFriend:
+        type: object
+        properties:
+            user:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer
+                        required: true
+
+    Friend:
+        type: object
+        properties:
+            id:
+                type: integer
+                required: true
+            user:
+                type: object
+                required: true
+                properties:
+                    id:
+                        type: integer
+                        required: true
+                    first_name:
+                        type: string
+                        required: true
+                    last_name:
+                        type: string
+                        required: true
+
+    FriendList:
+        type: object
+        properties:
+            friend_list:
+                type: Friend[]
+                required: true
+
+    SearchFriend:
+        type: object
+        properties:
+            offset:
+                type: integer
+                required: false
+            limit:
+                type: integer
+                required: false
+            sort:
+                type: string
+                required: false

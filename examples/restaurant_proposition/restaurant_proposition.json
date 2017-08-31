@@ -1,0 +1,16 @@
+{
+    "id": 4,
+    "restaurant": {
+        "id": 4,
+        "name": "53"
+    },
+    "date": "2017-06-02",
+    "restaurant_participant_list": [{
+        "id": 7,
+        "user": {
+            "id": 7,
+            "first_name": "Apollo",
+            "last_name": "Walsh"
+        }
+    }]
+}

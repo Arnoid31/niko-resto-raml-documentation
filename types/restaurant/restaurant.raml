@@ -1,0 +1,35 @@
+#%RAML 1.0 Library
+
+types:
+    Restaurant:
+        type: object
+        properties:
+            id:
+                type: integer
+                required: true
+            name:
+                type: string
+                required: true
+
+    RestaurantList:
+        type: object
+        properties:
+            restaurant_list:
+                type: Restaurant[]
+                required: true
+
+    SearchRestaurant:
+        type: object
+        properties:
+            name:
+                type: string
+                required: false
+            offset:
+                type: integer
+                required: false
+            limit:
+                type: integer
+                required: false
+            sort:
+                type: string
+                required: false

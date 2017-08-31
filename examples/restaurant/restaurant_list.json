@@ -1,0 +1,12 @@
+{
+    "restaurant_list": [{
+        "id": 1,
+        "name": "Le Père Fecto"
+    }, {
+        "id": 2,
+        "name": "Prétexte"
+    }, {
+        "id": 3,
+        "name": "Sushi Magic"
+    }]
+}
